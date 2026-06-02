@@ -18,7 +18,6 @@ import com.smartHire.model.User.Status;
 
 public class UserDAOImpl implements UserDao{
 	
-  private DBConnectionPool dbConnectionPool;
 	@Override
 	public User save(User user) {
 		// TODO Auto-generated method stub
@@ -71,10 +70,12 @@ public class UserDAOImpl implements UserDao{
 			        Connection cn = DBConnectionPool.getConnection();
 			        PreparedStatement ps = cn.prepareStatement(query)
 			      ){
+			
 			  ps.setString(1, email);
 			  try( ResultSet res= ps.executeQuery()){
 				  // check if any row was found
 				  if(res.next()) {
+					 
 					  // build User object from ResultSet
 		                User user = new User();
 		                user.setId(res.getInt("id"));
@@ -107,6 +108,11 @@ public class UserDAOImpl implements UserDao{
 			 
 			 
 		 } catch (SQLException e) {
+			 System.out.println("error sqlexception");
+			 System.out.println("error sqlexception");
+			    System.out.println("Error message: " + e.getMessage());  // ← add this
+			    System.out.println("Error code: " + e.getErrorCode());   // ← add this
+			    System.out.println("SQL State: " + e.getSQLState());     // ← add this
 			 throw new AppException(
 			            "Database error finding user by email: " + e.getMessage(), 500
 			        );

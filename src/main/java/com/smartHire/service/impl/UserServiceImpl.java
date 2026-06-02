@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import com.smartHire.dao.UserDao;
+import com.smartHire.dao.impl.UserDAOImpl;
 import com.smartHire.exception.AppException;
 import com.smartHire.exception.DuplicateApplicationException;
 import com.smartHire.exception.InvalidCredentialsException;
@@ -15,14 +16,15 @@ import com.smartHire.util.PasswordUtil;
 
 public class UserServiceImpl implements UserService {
 	
-   private UserDao userdao;
+    UserDao userdao=new UserDAOImpl();
 	@Override
 	public User login(String email, String password) {
 		 Optional<User> optionalUser = userdao.findByEmail(email);
 		 if(optionalUser.isEmpty()) {
 			 throw new InvalidCredentialsException("invalid email or password");
 		 }
-		User user=optionalUser.get();
+		   User user=optionalUser.get();
+		
 		if(!PasswordUtil.verify(password, user.getPassword())) {
 			 throw new InvalidCredentialsException("invalid email or password");
 		}
@@ -87,5 +89,5 @@ public class UserServiceImpl implements UserService {
 		 user.setStatus(User.Status.SUSPENDED);
 		return user;
 	}
-
+  
 }

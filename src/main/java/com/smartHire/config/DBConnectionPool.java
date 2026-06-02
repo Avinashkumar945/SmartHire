@@ -18,6 +18,7 @@ public class DBConnectionPool {
     public static void initilize() {
     	  try {
 			Context context = new InitialContext();
+			System.out.println("DataSource initialized successfully");
 			dataSource=(DataSource)context.lookup("java:comp/env/jdbc/smarthire_db");
 		} catch (NamingException e) {
 			// TODO Auto-generated catch block
@@ -33,6 +34,7 @@ public class DBConnectionPool {
                 "Call initialize() first."
             );
         }
+        System.out.println("DataSource is succefully connected");
         return dataSource.getConnection();
     }
 }
