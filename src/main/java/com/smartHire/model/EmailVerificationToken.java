@@ -21,6 +21,7 @@ public class EmailVerificationToken {
         this.userId = userId;
         this.token = token;
         this.expiresAt = expiresAt;
+        this.used    = false;
     }
 
     // Full Constructor

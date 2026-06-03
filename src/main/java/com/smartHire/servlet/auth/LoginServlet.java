@@ -51,8 +51,8 @@ public class LoginServlet extends HttpServlet {
 			   
 		} catch (AppException e) {
 			  
-			 request.setAttribute("error", e.getMessage());
-			 out.println("<h1>exception</h1>");
+			 request.setAttribute("errorMessage", e.getMessage());
+			System.out.println("error");
 			 request.getRequestDispatcher("/WEB-INF/Views/auth/login.jsp")
 	           .forward(request, response);
 		}

@@ -48,7 +48,7 @@ public class UserDAOImpl implements UserDao{
 	        // Get the auto generated id from database
 	        try (ResultSet generatedKeys = ps.getGeneratedKeys()) {
 	            if (generatedKeys.next()) {
-	                user.setId(generatedKeys.getInt(1)); // set id on user
+	                user.setId(generatedKeys.getLong(1)); // set id on user
 	            }
 	        }
 	        return user; 
@@ -78,7 +78,7 @@ public class UserDAOImpl implements UserDao{
 					 
 					  // build User object from ResultSet
 		                User user = new User();
-		                user.setId(res.getInt("id"));
+		                user.setId(res.getLong("id"));
 		                user.setEmail(res.getString("email"));
 		                user.setPassword(res.getString("password"));
 
@@ -133,7 +133,7 @@ public class UserDAOImpl implements UserDao{
 				  if(res.next()) {
 					  // build User object from ResultSet
 		                User user = new User();
-		                user.setId(res.getInt("id"));
+		                user.setId(res.getLong("id"));
 		                user.setEmail(res.getString("email"));
 		                user.setPassword(res.getString("password"));
 
@@ -182,7 +182,7 @@ public class UserDAOImpl implements UserDao{
 			       List<User> ls=new ArrayList<User>();
 			       while(res.next()) {
 			    	   User user=new User();
-			    	   user.setId(res.getInt("id"));
+			    	   user.setId(res.getLong("id"));
 		                user.setEmail(res.getString("email"));
 		                user.setPassword(res.getString("password"));
 

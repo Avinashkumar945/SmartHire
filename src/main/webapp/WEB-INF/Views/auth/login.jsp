@@ -29,6 +29,19 @@
 
 <div class="container">
     <div class="card login-card p-4">
+    
+    
+     <% if ("true".equals(request.getParameter("verified"))) { %>
+    <div class="alert alert-success">
+        ✅ Email verified! You can now sign in.
+    </div>
+    <% } %>
+
+    <% if ("true".equals(request.getParameter("registered"))) { %>
+      <div class="alert alert-info">
+        📧 Check your email to verify your account before signing in.
+      </div>
+    <% } %>
         
         <%-- Show success message after registration --%>
     <% if ("true".equals(request.getParameter("registered"))) { %>

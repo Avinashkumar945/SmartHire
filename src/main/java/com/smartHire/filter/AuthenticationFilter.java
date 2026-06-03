@@ -47,12 +47,13 @@ public class AuthenticationFilter implements Filter {
 		 HttpServletResponse res=(HttpServletResponse)response;
 		 HttpSession session = req.getSession(false);
 		 boolean isLoggedIn=(session!=null) && (session.getAttribute("currentUser")!=null);
-		  
+		  session.setMaxInactiveInterval(120);
 		 if(!isLoggedIn) {
 			 res.sendRedirect(req.getContextPath()+"/login");
 			 return;
 		 }
 		// pass the request along the filter chain
+		System.out.println( session.getLastAccessedTime());
 		  
 		chain.doFilter(request, response);
 	}

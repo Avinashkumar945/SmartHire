@@ -68,7 +68,7 @@ public class RegisterServlet extends HttpServlet {
                 "Password must be at least 8 characters.");
             request.setAttribute("email", email);
             request.getRequestDispatcher(
-                "/WEB-INF/views/auth/register.jsp"
+                "/WEB-INF/Views/auth/register.jsp"
             ).forward(request, response);
             return;
         }
@@ -82,7 +82,7 @@ public class RegisterServlet extends HttpServlet {
 		 request.setAttribute("errorMessage", e.getMessage());
          request.setAttribute("email", email); // keep email filled
          request.getRequestDispatcher(
-             "/WEB-INF/views/auth/register.jsp"
+             "/WEB-INF/Views/auth/register.jsp"
          ).forward(request, response);
 		
 	}

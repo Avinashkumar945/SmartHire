@@ -3,7 +3,7 @@ package com.smartHire.model;
 import java.time.LocalDateTime;
 
 public class User {
-	private Integer id;          
+	private Long id;          
     private String email;
     private String password   ;
     public enum Role{
@@ -30,11 +30,11 @@ public class User {
         this.status   = Status.PENDING_VERIFICATION;
     }
 
-	public Integer getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(Integer id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 

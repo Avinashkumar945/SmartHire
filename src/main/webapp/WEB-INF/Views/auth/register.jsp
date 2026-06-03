@@ -162,7 +162,7 @@
                             <input type="radio"
                                    name="role"
                                    value="JOB_SEEKER"
-                                   required/>
+                                   />
                             <div class="role-icon">👤</div>
                             <div class="role-label">Job Seeker</div>
                             <div class="role-desc">Looking for opportunities</div>
@@ -178,6 +178,12 @@
                             <div class="role-label">Recruiter</div>
                             <div class="role-desc">Hiring for my company</div>
                         </label>
+                    </div>
+                    
+                    <div id="roleError"
+                       class="text-danger mt-2"
+                        style="display:none;">
+                      Please select a role.
                     </div>
 
                 </div>
@@ -267,6 +273,24 @@
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 <script>
+   const role =
+        document.querySelector('input[name="role"]:checked');
+
+  if (!role) {
+    document.getElementById('roleError').style.display = 'block';
+    valid = false;
+    } else {
+      document.getElementById('roleError').style.display = 'none';
+    }
+  
+  document.querySelectorAll('input[name="role"]')
+  .forEach(radio => {
+      radio.addEventListener('change', function () {
+          document.getElementById('roleError').style.display = 'none';
+      });
+  });
+
+
 
     // Role card selection highlight
     document.querySelectorAll('.role-card input[type="radio"]')
