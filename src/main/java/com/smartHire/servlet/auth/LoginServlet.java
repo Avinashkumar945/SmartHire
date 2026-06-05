@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.smartHire.exception.AppException;
+import com.smartHire.model.User;
 import com.smartHire.service.UserService;
 import com.smartHire.service.impl.UserServiceImpl;
 
@@ -48,7 +49,15 @@ public class LoginServlet extends HttpServlet {
 		    PrintWriter out =response.getWriter();
 		try {
 			   userService.login(email,password);
-			   
+			   User user=userService.getUserbyemail(email);
+			   request.getSession().setAttribute("currentUser", user);
+			   System.out.println("hello brother");
+			   if(user.getRole().toString().equals("JOB_SEEKER")) {
+				   System.out.println("hello brother");
+				  response.sendRedirect("http://localhost:8080/SmartHire2/seeker/dashboard");
+				  System.out.println("hello  after brother");
+			   }
+			  
 		} catch (AppException e) {
 			  
 			 request.setAttribute("errorMessage", e.getMessage());
@@ -59,5 +68,6 @@ public class LoginServlet extends HttpServlet {
 		   
 		
 	}
+	
 
 }

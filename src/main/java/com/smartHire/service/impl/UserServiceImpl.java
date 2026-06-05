@@ -121,6 +121,15 @@ public class UserServiceImpl implements UserService {
 		}
 		return optionalUser.get();
 	}
+	
+	@Override
+	public User getUserbyemail(String email) {
+		Optional<User> optionalUser=userdao.findByEmail(email);
+		if(optionalUser.isEmpty()) {
+			throw new UserNotFoundException("user not found by  id: "+email);
+		}
+		return optionalUser.get();
+	}
 
 	@Override
 	public List<User> getAllUser() {

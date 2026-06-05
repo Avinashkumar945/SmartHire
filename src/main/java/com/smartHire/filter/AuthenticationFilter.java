@@ -19,7 +19,7 @@ import com.smartHire.service.UserService;
 /**
  * Servlet Filter implementation class AuthenticationFilter
  */
-@WebFilter(dispatcherTypes = {DispatcherType.REQUEST }
+@WebFilter(dispatcherTypes = {DispatcherType.REQUEST,DispatcherType.FORWARD }
 					, urlPatterns = { "/seeker/*", "/recruiter/*", "/admin/*" })
 public class AuthenticationFilter implements Filter {
 
@@ -47,13 +47,13 @@ public class AuthenticationFilter implements Filter {
 		 HttpServletResponse res=(HttpServletResponse)response;
 		 HttpSession session = req.getSession(false);
 		 boolean isLoggedIn=(session!=null) && (session.getAttribute("currentUser")!=null);
-		  session.setMaxInactiveInterval(120);
+		  
 		 if(!isLoggedIn) {
+			 System.out.println("what is happening");
 			 res.sendRedirect(req.getContextPath()+"/login");
 			 return;
 		 }
 		// pass the request along the filter chain
-		System.out.println( session.getLastAccessedTime());
 		  
 		chain.doFilter(request, response);
 	}

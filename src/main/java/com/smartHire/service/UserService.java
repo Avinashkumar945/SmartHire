@@ -18,6 +18,8 @@ public interface UserService {
 	List<User> getAllUser();
 	User userActivate(Integer userId);
 	User userSuspend(Integer userId);
+	User getUserbyemail(String email);
+	
 	
 	
 }
