@@ -3,7 +3,8 @@ package com.smartHire.model;
 import java.time.LocalDateTime;
 
 public class User {
-	private Long id;          
+	private Long id; 
+	private String name;
     private String email;
     private String password   ;
     public enum Role{
@@ -23,11 +24,12 @@ public class User {
 		// TODO Auto-generated constructor stub
 	}
     
-    public User(String email, String password, Role role) {
+    public User( String name,String email, String password, Role role) {
         this.email    = email;
         this.password = password;
         this.role     = role;
         this.status   = Status.PENDING_VERIFICATION;
+        this.name=name;
     }
 
 	public Long getId() {
@@ -84,6 +86,15 @@ public class User {
 
 	public LocalDateTime getUpdatedAt() {
 		return updatedAt;
+	}
+	
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	@Override

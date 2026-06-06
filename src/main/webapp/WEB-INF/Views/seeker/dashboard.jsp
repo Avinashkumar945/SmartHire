@@ -86,7 +86,7 @@
             <div class="col">
                 <h2 class="mb-1 fw-bold">Welcome back! 👋</h2>
                 <p class="mb-0 opacity-75">
-                    ${sessionScope.currentUser.email}
+                    ${sessionScope.currentUser.name}
                 </p>
                 <p class="mb-0 opacity-75 mt-1">
                     Find your dream job today.

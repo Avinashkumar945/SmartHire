@@ -110,12 +110,17 @@
             <ul class="navbar-nav ms-auto">
                 <% if (currentUser != null) { %>
 
-                    <!-- Show logged in email -->
-                    <li class="nav-item">
-                        <span class="nav-link text-white-50">
-                            👤 <%= currentUser.getEmail() %>
-                        </span>
-                    </li>
+                    <!-- Show name and profile link -->
+                          <div class="d-flex align-items-center gap-2">
+						<a href="${pageContext.request.contextPath}/seeker/profile"
+							   class="text-white text-decoration-none d-flex align-items-center gap-2">
+							
+							    <span style="font-size:20px;">👤</span>
+							
+                       </a>
+                       <span class="fw-semibold">
+							        ${sessionScope.currentUser.name}
+					    </span>
 
                     <!-- Logout button -->
                     <li class="nav-item">

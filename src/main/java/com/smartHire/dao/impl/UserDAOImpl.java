@@ -23,8 +23,8 @@ public class UserDAOImpl implements UserDao{
 		// TODO Auto-generated method stub
 		
 
-	    String query = "INSERT INTO users (email, password, role, status) " +
-	                   "VALUES (?, ?, ?, ?)";
+	    String query = "INSERT INTO users (email, password, role, status,name) " +
+	                   "VALUES (?,?, ?, ?, ?)";
 
 	    // try-with-resources → auto closes connection and statement
 	    try (
@@ -38,6 +38,7 @@ public class UserDAOImpl implements UserDao{
 	         ps.setString(2, user.getPassword());
 	         ps.setString(3, user.getRole().name());
 	         ps.setString(4, user.getStatus().name());
+	         ps.setString(5, user.getName());
 	         // Execute the INSERT
 	        int rowsAffected = ps.executeUpdate();
 
@@ -81,7 +82,7 @@ public class UserDAOImpl implements UserDao{
 		                user.setId(res.getLong("id"));
 		                user.setEmail(res.getString("email"));
 		                user.setPassword(res.getString("password"));
-
+		                user.setName(res.getString("name"));
 		                // Enum conversion
 		                user.setRole(User.Role.valueOf(res.getString("role")));
 		                user.setStatus(User.Status.valueOf(res.getString("status")));
@@ -136,7 +137,7 @@ public class UserDAOImpl implements UserDao{
 		                user.setId(res.getLong("id"));
 		                user.setEmail(res.getString("email"));
 		                user.setPassword(res.getString("password"));
-
+		                user.setName(res.getString("name"));
 		                // Enum conversion
 		                user.setRole(User.Role.valueOf(res.getString("role")));
 		                user.setStatus(User.Status.valueOf(res.getString("status")));
@@ -185,7 +186,7 @@ public class UserDAOImpl implements UserDao{
 			    	   user.setId(res.getLong("id"));
 		                user.setEmail(res.getString("email"));
 		                user.setPassword(res.getString("password"));
-
+		                user.setName(res.getString("name"));
 		                // Enum conversion
 		                user.setRole(User.Role.valueOf(res.getString("role")));
 		                user.setStatus(User.Status.valueOf(res.getString("status")));

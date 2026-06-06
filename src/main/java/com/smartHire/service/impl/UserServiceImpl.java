@@ -47,7 +47,7 @@ public class UserServiceImpl implements UserService {
 	 
 	 
 	@Override
-	public User register(String email, String password, Role role) {
+	public User register(String name,String email, String password, Role role) {
 		
 		if(email == null || email.trim().isEmpty()) {
 		    throw new ValidationException("Email is required");
@@ -97,7 +97,7 @@ public class UserServiceImpl implements UserService {
 	        );
 	    }
 	    String hashedPassword = PasswordUtil.hash(password);
-	    User user = new User(email, hashedPassword, role);
+	    User user = new User(name,email, hashedPassword, role);
 	    User savedUser= userdao.save(user);
 	    // Step 2 — create token OBJECT
 		 EmailVerificationToken token =

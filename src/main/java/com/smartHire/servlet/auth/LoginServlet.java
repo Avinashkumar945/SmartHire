@@ -52,12 +52,12 @@ public class LoginServlet extends HttpServlet {
 			   User user=userService.getUserbyemail(email);
 			   request.getSession().setAttribute("currentUser", user);
 			   System.out.println("hello brother");
-			   if(user.getRole().toString().equals("JOB_SEEKER")) {
+//			   if(user.getRole().toString().equals("JOB_SEEKER")) {
 				   System.out.println("hello brother");
 				  response.sendRedirect("http://localhost:8080/SmartHire2/seeker/dashboard");
 				  System.out.println("hello  after brother");
-			   }
-			  
+//			   }
+			  			  
 		} catch (AppException e) {
 			  
 			 request.setAttribute("errorMessage", e.getMessage());

@@ -190,6 +190,20 @@
             </div>
 
             <div class="divider">your details</div>
+            
+            <!-- name -->
+              <div class="mb-3">
+			    <label class="form-label fw-semibold">
+			        Full Name
+			    </label>
+				    <input type="text"
+				           name="fullName"
+				           class="form-control"
+				           placeholder="Enter your full name"
+				           value="<%= request.getAttribute("fullName") != null
+				                      ? request.getAttribute("fullName") : "" %>"
+				           required />
+               </div>
 
             <!-- Email -->
             <div class="mb-3">

@@ -44,12 +44,13 @@ public class RegisterServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		UserService userService = new UserServiceImpl();
+		String name=request.getParameter("fullName");
 		String email=request.getParameter("email");
 	    String password =request.getParameter("password");
 	    String confirmPassword=request.getParameter("confirmPassword");
 	    String role=request.getParameter("role");
 	    
-	    if(email==null || email.isBlank() || password==null || password.isBlank()
+	    if( name==null|| name.isBlank() ||email==null || email.isBlank() || password==null || password.isBlank()
 	    		|| confirmPassword==null || confirmPassword.isBlank() || role==null || role.isBlank()) {
 	    	request.setAttribute("errorMessage", "All fields are required");
 	    	request.setAttribute("email", email);
@@ -75,7 +76,7 @@ public class RegisterServlet extends HttpServlet {
 	    
 	    
 	 try {
-		 userService.register(email, confirmPassword, Role.valueOf(role));
+		 userService.register(name,email, confirmPassword, Role.valueOf(role));
 		 response.sendRedirect(request.getContextPath()+"/login?registered=true");
 	} catch (AppException e) {
 		// TODO: handle exception
