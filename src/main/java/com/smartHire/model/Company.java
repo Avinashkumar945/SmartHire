@@ -25,6 +25,9 @@ public class Company {
 		this.description = description;
 		this.logoPath = logoPath;
 	}
+	public Company() {
+		// TODO Auto-generated constructor stub
+	}
 	public Long getId() {
 		return id;
 	}

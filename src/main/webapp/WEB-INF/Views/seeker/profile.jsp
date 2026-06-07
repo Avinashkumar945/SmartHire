@@ -119,7 +119,7 @@
 
 <%
     User currentUser = (User) session.getAttribute("currentUser");
-    SeekerProfile profile = (SeekerProfile) session.getAttribute("seeker");
+    SeekerProfile profile = (SeekerProfile) request.getAttribute("seeker");
     boolean hasProfile = (profile != null);
 
     // calculate completion percentage

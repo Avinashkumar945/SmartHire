@@ -67,4 +67,15 @@ public class SeekerServiceimpl implements SeekerService {
 	    // Step 3 — save to database via DAO
 	    return dao.save(seeker);
 	}
+	@Override
+	public SeekerProfile findAlreadySavedSeekerProfile(SeekerProfile seeker) {
+		// TODO Auto-generated method stub
+	     Optional<SeekerProfile> savedseeker=dao.findByUserId(seeker.getUserId());
+	      if(savedseeker.isEmpty()) {
+	    	  throw new AppException("please update the profile ", 500);
+	      }
+		return savedseeker.get() ;
+	}
+	
+	
 }

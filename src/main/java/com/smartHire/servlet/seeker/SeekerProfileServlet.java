@@ -39,6 +39,12 @@ public class SeekerProfileServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("profile Servlet");
+		HttpSession session=request.getSession();
+		User user =(User) session.getAttribute("currentUser");
+		SeekerProfile sp=new SeekerProfile();
+		sp.setUserId(user.getId());
+		SeekerProfile savedSeeker=seekerService.findAlreadySavedSeekerProfile(sp);
+		request.setAttribute("seeker", savedSeeker);
 		 request.getRequestDispatcher(
 		            "/WEB-INF/Views/seeker/profile.jsp"
 		        ).forward(request, response);
@@ -84,7 +90,7 @@ public class SeekerProfileServlet extends HttpServlet {
 		}
 		finally {
 			savedseeker=seekerService.updateSeekerProfile(seeker);
-			session.setAttribute("seeker", savedseeker);
+			request.setAttribute("seeker", savedseeker);
 		}
 		
 		request.getRequestDispatcher("/WEB-INF/Views/seeker/profile.jsp").forward(request,response);
